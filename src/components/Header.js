@@ -10,7 +10,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const Header = () => {
     return (
-        <div className='sticky top-0 flex justify-evenly border-b-[0.1px] border-solid border-[lightgray] py-[10px] w-full z-[999]'>
+        <div className='sticky top-0 bg-white flex justify-evenly border-b-[0.1px] border-solid border-[lightgray] py-[10px] w-full z-[999]'>
             {/* Header Left Part */}
             <div className='flex items-center'>
                 {/* Logo */}
@@ -20,7 +20,7 @@ const Header = () => {
                 />
 
                 {/* Search Field */}
-                <div className='flex items-center p-[10px] rounded-[5px] text-gray bg-[#eef3f8]'>
+                <div className='flex items-center p-[10px] rounded-[5px] text-[gray] bg-[#eef3f8]'>
                     <SearchIcon color='action' />
                     <input
                         className='outline-none border-none bg-inherit'
