@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import InputOption from './InputOption';
 
 import Avatar from '@mui/material/Avatar';
@@ -7,12 +7,14 @@ import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import SendIcon from '@mui/icons-material/Send';
 
-const Post = ({ name, description, message, photoUrl }) => {
+const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
     return (
-        <div className='bg-white p-[15px] mb-[10px] rounded-[10px]'>
+        <div ref={ref} className='bg-white p-[15px] mb-[10px] rounded-[10px]'>
             {/* Post Header */}
             <div className='flex mb-[10px]'>
-                <Avatar />
+                <Avatar src={photoUrl} >
+                    {name[0].toUpperCase()}
+                </Avatar>
 
                 {/* Post info */}
                 <div className='ml-[10px]'>
@@ -49,6 +51,6 @@ const Post = ({ name, description, message, photoUrl }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Post;

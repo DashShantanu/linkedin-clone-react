@@ -1,4 +1,8 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser } from '../features/userSlice';
+import { auth } from '../firebase';
+
 import HeaderOptions from './HeaderOptions';
 
 import SearchIcon from '@mui/icons-material/Search';
@@ -9,6 +13,14 @@ import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const Header = () => {
+    const user = useSelector(selectUser);
+    const dispatch = useDispatch();
+
+    const logoutOfApp = () => {
+        dispatch(logout());
+        auth.signOut();
+    };
+
     return (
         <div className='sticky top-0 bg-white flex justify-evenly border-b-[0.1px] border-solid border-[lightgray] py-[10px] w-full z-[999]'>
             {/* Header Left Part */}
@@ -25,6 +37,7 @@ const Header = () => {
                     <input
                         className='outline-none border-none bg-inherit'
                         type='text'
+                        placeholder='Search'
                     />
                 </div>
             </div>
@@ -36,7 +49,11 @@ const Header = () => {
                 <HeaderOptions Icon={BusinessCenterIcon} title='Jobs' />
                 <HeaderOptions Icon={ChatIcon} title='Messaging' />
                 <HeaderOptions Icon={NotificationsIcon} title='Notifications' />
-                <HeaderOptions avatar='https://i.ibb.co/KxzVskJ/IMG-20211108-155612.jpg' title='Me' />
+                <HeaderOptions
+                    avatar={true}
+                    title='Me'
+                    onClick={logoutOfApp}
+                />
             </div>
         </div>
     )

@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../features/userSlice';
+import FlipMove from 'react-flip-move';
+
 import InputOption from './InputOption';
 import Post from './Post';
 import { db } from '../firebase';
@@ -14,6 +18,8 @@ import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 const Feed = () => {
     const [posts, setPosts] = useState([]);
     const [input, setInput] = useState('');
+
+    const user = useSelector(selectUser);
 
     useEffect(() => {
         db
@@ -33,10 +39,10 @@ const Feed = () => {
         e.preventDefault();
 
         db.collection('posts').add({
-            name: 'Shantanu Dash',
-            description: 'This is a test',
+            name: user.displayName,
+            description: user.email,
             message: input,
-            photoUrl: '',
+            photoUrl: user.photoUrl || '',
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         });
 
@@ -44,7 +50,7 @@ const Feed = () => {
     };
 
     return (
-        <div className='flex-[0.6] my-0 mx-5'>
+        <div className=' basis-3/5 my-0 mx-5'>
             {/* Input Container */}
             <div className='bg-white p-[10px] pb-5 rounded-[10px] mb-5'>
                 {/* Input */}
@@ -96,15 +102,17 @@ const Feed = () => {
                 </div>
             </div>
 
-            {/* Posts */}
-            {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
-                <Post
-                    key={id}
-                    name={name}
-                    description={description}
-                    message={message}
-                />
-            ))}
+            <FlipMove>
+                {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+                    <Post
+                        key={id}
+                        name={name}
+                        description={description}
+                        message={message}
+                        photoUrl={photoUrl}
+                    />
+                ))}
+            </FlipMove>
 
         </div>
     );
