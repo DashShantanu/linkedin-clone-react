@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectUser } from './features/userSlice';
+import { selectUser } from './features/userSlice.js';
 import { auth } from './firebase';
 import { useDispatch } from 'react-redux';
-import { login, logout } from './features/userSlice';
+import { login, logout } from './features/userSlice.js';
 
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
