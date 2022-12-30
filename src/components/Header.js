@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout, selectUser } from '../features/userSlice';
+import { useDispatch } from 'react-redux';
+import { logout } from '../features/userSlice';
 import { auth } from '../firebase';
 
 import HeaderOptions from './HeaderOptions';
@@ -13,7 +13,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const Header = () => {
-    const user = useSelector(selectUser);
+    // const user = useSelector(selectUser);
     const dispatch = useDispatch();
 
     const logoutOfApp = () => {
