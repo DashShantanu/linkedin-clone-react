@@ -31,7 +31,7 @@ const App = () => {
       }
     });
 
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="flex flex-col items-center bg-[#f3f2ef]">
