@@ -13,7 +13,8 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
             {/* Post Header */}
             <div className='flex mb-[10px]'>
                 <Avatar src={photoUrl} >
-                    {name[0].toUpperCase()}
+                    {/* {name[0].toUpperCase()} */}
+                    {name ? name[0].toUpperCase() : ''}
                 </Avatar>
 
                 {/* Post info */}
