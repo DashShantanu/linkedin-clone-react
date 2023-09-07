@@ -3,4 +3,4 @@ Building a LinkedIn clone using React JS, Redux, Firebase, Material UI and Tailw
 
 Stable Release:
 
-https://dash-linkedin.netlify.app
+https://dash-linkedin-clone.netlify.app
